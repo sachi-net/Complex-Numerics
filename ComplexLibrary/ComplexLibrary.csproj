@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Sachintha Silva</Authors>
+    <Company>Sachi-Home</Company>
+    <Description>Reusable library to perform complex numerical operations</Description>
+    <Copyright>Sachintha-PC</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>ComplexLibrary.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>ComplexLibrary.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

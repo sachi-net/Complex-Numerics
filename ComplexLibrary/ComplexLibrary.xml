@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ComplexLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:PhaseMode">
+            <summary>
+            Method of sign-convention when defining argument
+            </summary>
+        </member>
+        <member name="F:PhaseMode.ArgPrimary">
+            <summary>
+            Restrict phase in argument of complex number Z within range -π &lt; Arg(Z) ≤ π
+            </summary>
+        </member>
+        <member name="F:PhaseMode.ArgSecondary">
+            <summary>
+            Angle phase in argument of complex number Z within range 0 ≤ arg(Z) &lt; 2π
+            </summary>
+        </member>
+    </members>
+</doc>
