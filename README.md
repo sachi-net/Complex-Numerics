@@ -71,11 +71,11 @@ Following tables indicate the implementation structure of Complex-Library.
 |Conjugate|~|`Complex x`|Calculate the conjugate of this complex number|
 |Divide|/|`Complex x`, `Complex y`|Divide complex number by another|
 |Divide|/|`Complex x`, `double n`|Divide complex number by a real number|
-|Equlas|==|`Complex x`, `Complex y`|Evaluate the equality of two complex numbers|
+|Equals|==|`Complex x`, `Complex y`|Evaluate the equality of two complex numbers|
 |Multiply|* |`Complex x`, `Complex y`|Multiply two complex numbers|
 |Multiply|* |`Complex x`, `double n`|Multiply a real number by complex number|
 |Multiply|* |`double n`, `Complex x`|Multiply complex number by a real number|
-|Not Equlas|!=|`Complex x`, `Complex y`|Evaluate the inequality of two complex numbers|
+|Not Equals|!=|`Complex x`, `Complex y`|Evaluate the inequality of two complex numbers|
 |Power|^ |`Complex x`, `int e`|Raise the complex number to the power of provided real number|
 |Subtract|-|`Complex x`, `Complex y`|Subtract two complex numbers|
 |Subtract|-|`Complex x`, `double n`|Subtract a real number from complex number|
@@ -154,7 +154,7 @@ string result = z.ToString(); // (3, 0)
 ```
 
 ### Complex Conjugate
-The conjugate pair of complex number `z = x + iy` is represented by `z<sup>/</sup> = x - iy`. The conjugate of complex number `z` can be calculated as follows.
+The conjugate pair of complex number `z = x + iy` is represented by `~z = x - iy`. The conjugate of complex number `z` can be calculated as follows.
 ```C#
 Complex z = new(2, 5);
 Complex conjugate;
