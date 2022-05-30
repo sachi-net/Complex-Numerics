@@ -234,6 +234,16 @@ namespace ComplexLibrary
         }
 
         /// <summary>
+        /// Convert double-precision real number to a complex number.
+        /// </summary>
+        /// <param name="n">Double-precision real number n.</param>
+        /// <returns>Complex number by provided real number.</returns>
+        public static Complex ToComplex(double n)
+        {
+            return new(n, 0);
+        }
+
+        /// <summary>
         /// Evaluate the equality of this complex number with the given object.
         /// </summary>
         /// <param name="obj">Object to be compare with this complex number.</param>
@@ -474,6 +484,11 @@ namespace ComplexLibrary
                     .Replace("[#NAME]", nameof(y)));
             }
 
+            if (y.Modulus is 0)
+            {
+                throw new DivideByZeroException(Message.ZERO_DIVISION_ERROR);
+            }
+
             double Re = (x.Real * y.Real + x.Imaginary * y.Imaginary) / Math.Pow(y.Modulus, 2);
             double Im = (x.Imaginary * y.Real - x.Real * y.Imaginary) / Math.Pow(y.Modulus, 2);
 
@@ -505,7 +520,7 @@ namespace ComplexLibrary
         }
 
         /// <summary>
-        /// Raise the complex number to the provided real number.
+        /// Raise the complex number to the power of provided real number.
         /// </summary>
         /// <param name="x">Complex number x.</param>
         /// <param name="e">Exponent value (power) e.</param>
@@ -602,11 +617,17 @@ namespace ComplexLibrary
         /// </summary>
         /// <returns>Inverse of the complex number.</returns>
         /// <exception cref="InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+        /// <exception cref="DivideByZeroException">Throws when the modulus of this complex number is zero which causes the zero division.</exception>
         public Complex Reciprocal()
         {
             if (this is null)
             {
                 throw new ComplexNotInitializedException(Message.COMPLEX_NOT_INITIALIZED);
+            }
+
+            if (Modulus is 0)
+            {
+                throw new DivideByZeroException(Message.ZERO_DIVISION_ERROR);
             }
 
             return new Complex(Real, -Imaginary) / Math.Pow(Modulus, 2);

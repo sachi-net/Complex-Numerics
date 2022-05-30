@@ -87,6 +87,13 @@
             <returns>Value of this complex number as real.</returns>
             <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
         </member>
+        <member name="M:ComplexLibrary.Complex.ToComplex(System.Double)">
+            <summary>
+            Convert double-precision real number to a complex number.
+            </summary>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex number by provided real number.</returns>
+        </member>
         <member name="M:ComplexLibrary.Complex.Equals(System.Object)">
             <summary>
             Evaluate the equality of this complex number with the given object.
@@ -211,7 +218,7 @@
         </member>
         <member name="M:ComplexLibrary.Complex.op_ExclusiveOr(ComplexLibrary.Complex,System.Int32)">
             <summary>
-            Raise the complex number to the provided real number.
+            Raise the complex number to the power of provided real number.
             </summary>
             <param name="x">Complex number x.</param>
             <param name="e">Exponent value (power) e.</param>
@@ -262,6 +269,7 @@
             </summary>
             <returns>Inverse of the complex number.</returns>
             <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws when the modulus of this complex number is zero which causes the zero division.</exception>
         </member>
         <member name="M:ComplexLibrary.Complex.Sqrt">
             <summary>
