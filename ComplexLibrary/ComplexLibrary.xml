@@ -4,6 +4,321 @@
         <name>ComplexLibrary</name>
     </assembly>
     <members>
+        <member name="T:ComplexLibrary.Complex">
+            <summary>
+            Defines a complex number with complex numerical arithmetics.
+            </summary>
+        </member>
+        <member name="F:ComplexLibrary.Complex.E">
+            <summary>
+            Mathematical constant (Euler's number) e.
+            </summary>
+        </member>
+        <member name="F:ComplexLibrary.Complex.Pi">
+            <summary>
+            Mathematical constant π.
+            </summary>
+        </member>
+        <member name="P:ComplexLibrary.Complex.Real">
+            <summary>
+            Real component of this complex number.
+            </summary>
+        </member>
+        <member name="P:ComplexLibrary.Complex.Imaginary">
+            <summary>
+            Imaginary component of this complex number.
+            </summary>
+        </member>
+        <member name="P:ComplexLibrary.Complex.Argument">
+            <summary>
+            Argument (phase) of this complex number represented in Arg-Secondary (0 ≤ arg(Z) &lt; 2π) convention.
+            </summary>
+        </member>
+        <member name="P:ComplexLibrary.Complex.Modulus">
+            <summary>
+            Modulus (magnitude or radius) of this complex number.
+            </summary>
+        </member>
+        <member name="M:ComplexLibrary.Complex.#ctor(System.Double,System.Double)">
+            <summary>
+            Initializes an instance of new Complex object with cartesian (Argand) coordinates.
+            </summary>
+            <param name="real">Real (x or Re(Z)) component of the complex number.</param>
+            <param name="imaginary">Imaginary (y or Im(Z)) component of the complex number.</param>
+        </member>
+        <member name="M:ComplexLibrary.Complex.#ctor(System.Double,System.Double,PhaseMode)">
+            <summary>
+            Initializes an instance of new Complex object with polar coordinates.
+            </summary>
+            <param name="radius">Radius (modulus) of the complex number.</param>
+            <param name="argument">Argument (phase) of the complex number in radians.</param>
+            <param name="phaseMode">Sign-convention of argument in either Arg(Z): (-π, π] or arg(Z): [0, 2π).</param>
+            <exception cref="T:System.ArgumentException">Throws when the radius is negative.</exception>
+            <exception cref="T:System.ArgumentException">Throws when the complex argument does not match with the given phase-mode.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.ToString">
+            <summary>
+            Convert the complex number into a string notation.
+            </summary>
+            <returns>String notation of this complex number in cartesian coordinates.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when this complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.ToString(System.Byte)">
+            <summary>
+            Convert the complex number into a string notation with given decimal precision.
+            </summary>
+            <param name="precision">Number of decimals to in string notation.</param>
+            <returns>String notation of this complex number in cartesian coordinates.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when this complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.ToString(ComplexFormat,System.Byte)">
+            <summary>
+            Convert the complex number into the given standard notation with decimal precision.
+            </summary>
+            <param name="format">Complex notation either Cartesian, Polar or Exponential.</param>
+            <param name="precision">Number of decimals to in string notation.</param>
+            <returns>String notation of this complex number with given standard format (arg(Z): [0, 2π) convention is used for Polar and Exponential formats).</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when this complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.ToReal">
+            <summary>
+            Convert this Complex to double precision floating-point number.
+            </summary>
+            <returns>Value of this complex number as real.</returns>
+            <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.Equals(System.Object)">
+            <summary>
+            Evaluate the equality of this complex number with the given object.
+            </summary>
+            <param name="obj">Object to be compare with this complex number.</param>
+            <returns>Return true if the objects are equals and otherwise false.</returns>
+        </member>
+        <member name="M:ComplexLibrary.Complex.Equals(ComplexLibrary.Complex)">
+            <summary>
+            Evaluate the equality of this complex number with the given complex number.
+            </summary>
+            <param name="other">Complex number to be compare with this complex number.</param>
+            <returns>Return true if the objects are equals and otherwise false.</returns>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Addition(ComplexLibrary.Complex,ComplexLibrary.Complex)">
+            <summary>
+            Add two complex numbers.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="y">Complex number y.</param>
+            <returns>Complex result of the addion of complex number x and y.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the x or y complex objects are not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Addition(ComplexLibrary.Complex,System.Double)">
+            <summary>
+            Add complex number to a real number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the addion of complex number x and real number n.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Addition(System.Double,ComplexLibrary.Complex)">
+            <summary>
+            Add real number to complex number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the addion of complex number x and real number n.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Subtraction(ComplexLibrary.Complex,ComplexLibrary.Complex)">
+            <summary>
+            Subtract two complex numbers.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="y">Complex number y.</param>
+            <returns>Complex result of the subtraction of complex number y from x.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the x or y complex objects are not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Subtraction(ComplexLibrary.Complex,System.Double)">
+            <summary>
+            Subtract a real number from complex number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the subtraction of real number n from complex number x.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Subtraction(System.Double,ComplexLibrary.Complex)">
+            <summary>
+            Subtract complex number from a real number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the subtraction of complex number x from real number n.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_UnaryNegation(ComplexLibrary.Complex)">
+            <summary>
+            Negate current complex number.
+            </summary>
+            <param name="x">Current cumplex number.</param>
+            <returns>Negative of current complex number.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Multiply(ComplexLibrary.Complex,ComplexLibrary.Complex)">
+            <summary>
+            Multiply two complex numbers.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="y">Complex number y.</param>
+            <returns>Complex result of the multiplication of complex number x and y.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the x or y complex objects are not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Multiply(System.Double,ComplexLibrary.Complex)">
+            <summary>
+            Multiply a real number by complex number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the multiplication of complex number x by real number n.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Multiply(ComplexLibrary.Complex,System.Double)">
+            <summary>
+            Multiply complex number by a real number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the multiplication of complex number x by real number n.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Division(ComplexLibrary.Complex,ComplexLibrary.Complex)">
+            <summary>
+            Divide complex number by another.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="y">Complex number y.</param>
+            <returns>Complex result of the division of complex number x by y.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the x or y complex objects are not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Division(ComplexLibrary.Complex,System.Double)">
+            <summary>
+            Divide complex number by a real number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="n">Double-precision real number n.</param>
+            <returns>Complex result of the division of complex number x by real number n.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+            <exception cref="T:System.DivideByZeroException">Throws when try divide complex number by zero.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_ExclusiveOr(ComplexLibrary.Complex,System.Int32)">
+            <summary>
+            Raise the complex number to the provided real number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="e">Exponent value (power) e.</param>
+            <returns>Complex result of the exponential of complex number x to the power of e.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_OnesComplement(ComplexLibrary.Complex)">
+            <summary>
+            Calculate the conjugate of this complex number.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <returns>Conjugate of complex number x.</returns>
+            <exception cref="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">Throws when the current complex object is not initialized.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Equality(ComplexLibrary.Complex,ComplexLibrary.Complex)">
+            <summary>
+            Evaluate the equality of two complex numbers.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="y">Complex number y.</param>
+            <returns>Return true if the objects are equals and otherwise false.</returns>
+        </member>
+        <member name="M:ComplexLibrary.Complex.op_Inequality(ComplexLibrary.Complex,ComplexLibrary.Complex)">
+            <summary>
+            Evaluate the inequality of two complex numbers.
+            </summary>
+            <param name="x">Complex number x.</param>
+            <param name="y">Complex number y.</param>
+            <returns>Return true if the objects are not equals and otherwise false.</returns>
+        </member>
+        <member name="M:ComplexLibrary.Complex.Negate">
+            <summary>
+            Negate this complex number.
+            </summary>
+            <returns>Negative of this complex number.</returns>
+            <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.Conjugate">
+            <summary>
+            Calculate the conjugate of this complex number.
+            </summary>
+            <returns>Conjugate of this complex number.</returns>
+            <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.Reciprocal">
+            <summary>
+            Calculate the reciprocal (multiplicative inverse) of this complex number.
+            </summary>
+            <returns>Inverse of the complex number.</returns>
+            <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.Sqrt">
+            <summary>
+            Calculate the square root of this complex number.
+            </summary>
+            <returns>Complex result of square root of this complex number.</returns>
+            <exception cref="T:System.InvalidCastException">Throws when this complex object is not a pure real number.</exception>
+        </member>
+        <member name="M:ComplexLibrary.Complex.GetHashCode">
+            <summary>
+            Calculate the hashcode of this complex number.
+            </summary>
+            <returns>Hash value of this complex number.</returns>
+        </member>
+        <member name="T:ComplexLibrary.Exceptions.ComplexNotInitializedException">
+            <summary>
+            Exception when the complex number is not initialized before usage.
+            </summary>
+        </member>
+        <member name="M:ComplexLibrary.Exceptions.ComplexNotInitializedException.#ctor">
+            <summary>
+            Initialize an instance of ComplexNotInitializedException.
+            </summary>
+        </member>
+        <member name="M:ComplexLibrary.Exceptions.ComplexNotInitializedException.#ctor(System.String)">
+            <summary>
+            Initialize an instance of ComplexNotInitializedException with specified message.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+        </member>
+        <member name="M:ComplexLibrary.Exceptions.ComplexNotInitializedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialize an instance of ComplexNotInitializedException with specified message and exception that cause this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference.</param>
+        </member>
+        <member name="T:ComplexFormat">
+            <summary>
+            Complex number format to be used in string notation.
+            </summary>
+        </member>
+        <member name="F:ComplexFormat.Cartesian">
+            <summary>
+            Cartesian format as Z = x + iy.
+            </summary>
+        </member>
+        <member name="F:ComplexFormat.Polar">
+            <summary>
+            Polar format as Z = r[Cos(φ) + i.Sin(φ)].
+            </summary>
+        </member>
+        <member name="F:ComplexFormat.Exponential">
+            <summary>
+            Exponential format as Z = re^(iφ).
+            </summary>
+        </member>
         <member name="T:PhaseMode">
             <summary>
             Method of sign-convention when defining argument
