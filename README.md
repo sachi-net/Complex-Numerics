@@ -31,8 +31,8 @@ Following tables indicate the implementation structure of Complex-Library.
 |Option|Description|
 |---|---|
 |`Cartesian`|Cartesian format as Z = x + iy|
-|`Polar`|Polar format as Z = r\[Cos(φ) + i.Sin(φ)\]|
 |`Exponential`|Exponential format as Z = re<sup>iφ</sup>|
+|`Polar`|Polar format as Z = r\[Cos(φ) + i.Sin(φ)\]|
 
 `PhaseMode` enumeration defines the method of sign-convention when defining argument.
 |Option|Description|
