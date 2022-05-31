@@ -124,17 +124,20 @@ string result2 = w.ToString(4); // (1, 1.7320)
 ```
 To represent in cartesian notation,
 ```C#
-string result = new Complex(2, -3).ToString(ComplexMode.Cartesian); // 2 - 3i
+string result = new Complex(2, -3).ToString(ComplexFormat.Cartesian); 
+// Represent as 2 - 3i
 ```
 
 To represent in polar notation,
 ```C#
-string result = new Complex(2, Complex.Pi / 3, PhaseMode.ArgPrimary).ToString(ComplexMode.Polar); // 2[Cos(1.0472) + i.Sin(1.0472)]
+string result = new Complex(2, Complex.Pi / 3, PhaseMode.ArgPrimary).ToString(ComplexFormat.Polar); 
+// Represent as 2[Cos(1.0472) + i.Sin(1.0472)]
 ```
 
 To represent in exponential notation,
 ```C#
-string result = new Complex(2, Complex.Pi / 3, PhaseMode.ArgPrimary).ToString(ComplexMode.Exponential); // 2e1.0472i
+string result = new Complex(2, Complex.Pi / 3, PhaseMode.ArgPrimary).ToString(ComplexFormat.Exponential); 
+// Represent as 2e1.0472i
 ```
 
 ### Complex Number Conversion
@@ -279,9 +282,9 @@ To evaluate the equality of two complex numbers,
 Complex w = new(1, 3);
 bool result;
 
-result = w.Reciprocal() == (~w / w.Modulus); // True
+result = w.Reciprocal() == (~w / Math.Pow(w.Modulus, 2)); // True
 // Or
-result = w.Reciprocal().Equals(~w / w.Modulus); // True
+result = w.Reciprocal().Equals(~w / Math.Pow(w.Modulus, 2)); // True
 
 result = w == ~w; // False
 // Or
