@@ -90,7 +90,7 @@ To initialize a complex number `z` with cartesian coordinates such that `z = 5 -
 Complex z = new(1, -3);
 ```
 
-To initialize a complex number `z` with polar coordinates such that `radius` is `2` and `argument` (angle) is `240°` (the argument should be defined with radians as `4π/3` instead of degrees),  
+To initialize a complex number `z` with polar coordinates such that `radius` is `2` and `argument` (angle) is `240°` (the argument should be defined with radians as `4π/3` or `-2π/3` based on sign-convention, instead of degrees),  
 Using  `-π < Arg(Z) ≤ π` convention or `PhaseMode.ArgPrimary`
 ```C#
 Complex z = new(2, -2 * Complex.Pi / 3, PhaseMode.ArgPrimary);
