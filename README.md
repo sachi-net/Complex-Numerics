@@ -85,12 +85,12 @@ Following tables indicate the implementation structure of Complex-Library.
 Following section describe the general usage of `ComplexLibrary` to perform complex arithmetic operations.
 
 ### Initialize New Complex number
-To initialize a complex number `z` with cartesian coordinates such that `z = 5 -3i`,
+To initialize a complex number `z` with cartesian coordinates such that `z = 5 - 3i`,
 ```C#
 Complex z = new(1, -3);
 ```
 
-To initialize a complex number `z` with polar coordinates such that `radius` is `2` and `argument` (angle) is `240°` (the argument should be defined with radians instead of degrees),  
+To initialize a complex number `z` with polar coordinates such that `radius` is `2` and `argument` (angle) is `240°` (the argument should be defined with radians as `4π/3` instead of degrees),  
 Using  `-π < Arg(Z) ≤ π` convention or `PhaseMode.ArgPrimary`
 ```C#
 Complex z = new(2, -2 * Complex.Pi / 3, PhaseMode.ArgPrimary);
