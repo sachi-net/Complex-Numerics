@@ -44,7 +44,7 @@ Following tables indicate the implementation structure of Complex-Library.
 |Name|Description|
 |---|---|
 |`Complex(double real, double imaginary)`|Initializes an instance of new Complex object with cartesian (Argand) coordinates with cartisian coordinates as `real` and `imaginary`|
-|`Complex(double radius, double argument, [PhaseMode phaseMode])`|Initializes an instance of new Complex object with polar coordinates `radius`, `argument` and `phaseMode` convention.|
+|`Complex(double radius, double argument, PhaseMode phaseMode)`|Initializes an instance of new Complex object with polar coordinates `radius`, `argument` and `phaseMode` convention.|
 
 ### Methods
 |Name|Return Type|Description|
@@ -52,6 +52,7 @@ Following tables indicate the implementation structure of Complex-Library.
 |`Conjugate()`|`Complex`|Calculate the reciprocal (multiplicative inverse) of this complex number|
 |`Equals(Complex)`|`bool`|Evaluate the equality of this complex number with the given complex number|
 |`Equals(object)`|`bool`|Evaluate the equality of this complex number with the given object|
+|`FindQuadraticRoots(double, double, double)`|`Complex[]`|Calculates complex roots of quadratic equation ax² + bx + c = 0|
 |`GetHashCode()`|`int`|Calculate the hashcode of this complex number|
 |`Negate()`|`Complex`|Calculate the conjugate of this complex number|
 |`Reciprocal()`|`Complex`|Calculate the reciprocal (multiplicative inverse) of this complex number|
@@ -185,6 +186,28 @@ Complex z = new(-2, 3);
 Complex reciprocal = z.Reciprocal();
 ```
 This operation will throw `ComplexNotInitializedException` exception when required complex parameters are `null` and `DivideByZeroException` exception if the modulus of the complex number is zero which causes the zero division.
+
+### Quadratic Complex Roots
+To calculate roots of standard quadratic equation ax² + bx + c = 0,
+```C#
+Complex[] roots;
+
+// Roots of x² - 5x + 6 = 0
+roots = Complex.FindQuadraticRoots(1, -5, 6);
+Console.WriteLine("{0} and {1}", roots[0], roots[1]);
+// (3, 0) and (2, 0)
+
+// Roots of x² - 2x + 1 = 0
+roots = Complex.FindQuadraticRoots(1, -2, 1);
+Console.WriteLine(roots[0]);
+// (1, 0)
+
+// Roots of x² - 2x + 5 = 0
+roots = Complex.FindQuadraticRoots(1, -2, 5);
+Console.WriteLine("{0} and {1}", roots[0], roots[1]);
+// (1, 2) and (1, -2)
+```
+This operation will throw `InvalidOperationException` exception when parameter `a` is zero which correspond to the coefficient `a` of the quadratic equation. 
 
 ## Complex Operations
 Complex object can perform following arithmetic operations.
