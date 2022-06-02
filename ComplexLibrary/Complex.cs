@@ -72,7 +72,7 @@ namespace ComplexLibrary
         /// <param name="phaseMode">Sign-convention of argument in either Arg(Z): (-π, π] or arg(Z): [0, 2π).</param>
         /// <exception cref="ArgumentException">Throws when the radius is negative.</exception>
         /// <exception cref="ArgumentException">Throws when the complex argument does not match with the given phase-mode.</exception>
-        public Complex(double radius, double argument, PhaseMode phaseMode = PhaseMode.ArgPrimary)
+        public Complex(double radius, double argument, PhaseMode phaseMode)
         {
             if (radius < 0)
             {
@@ -113,8 +113,8 @@ namespace ComplexLibrary
                 throw new ComplexNotInitializedException(Message.COMPLEX_NOT_INITIALIZED);
             }
 
-            double Re = Real is 0 ? Math.Abs(Real) : Real;
-            double Im = Imaginary is 0 ? Math.Abs(Imaginary) : Imaginary;
+            double Re = (Real is 0 || Math.Abs(Real) < eps) ? Math.Abs(Real) : Real;
+            double Im = (Imaginary is 0 || Math.Abs(Imaginary) < eps) ? Math.Abs(Imaginary) : Imaginary;
 
             return $"({Re}, {Im})";
         }
@@ -132,8 +132,8 @@ namespace ComplexLibrary
                 throw new ComplexNotInitializedException(Message.COMPLEX_NOT_INITIALIZED);
             }
 
-            double Re = Real is 0 ? Math.Abs(Real) : Real;
-            double Im = Imaginary is 0 ? Math.Abs(Imaginary) : Imaginary;
+            double Re = (Real is 0 || Math.Abs(Real) < eps) ? Math.Abs(Real) : Real;
+            double Im = (Imaginary is 0 || Math.Abs(Imaginary) < eps) ? Math.Abs(Imaginary) : Imaginary;
 
             return $"({Math.Round(Re, precision)}, {Math.Round(Im, precision)})";
         }
@@ -171,8 +171,8 @@ namespace ComplexLibrary
 
                 string complex = cases.ContainsKey(this) ? 
                     cases.Where(x => x.Key.Equals(this)).FirstOrDefault().Value :
-                    Real is 0 && Imaginary is not 0 ? $"{Im}i" :
-                    Real is not 0 && Imaginary is 0 ? $"{Re}" :
+                    (Real is 0 || Math.Abs(Real) < eps) && Imaginary is not 0 ? $"{Im}i" :
+                    Real is not 0 && (Imaginary is 0 || Math.Abs(Imaginary) < eps) ? $"{Re}" :
                     Real is not 0 && Imaginary is 1 ? $"{Re}+i" :
                     Real is not 0 && Imaginary is -1 ? $"{Re}-i" :
                     Imaginary > 0 ? $"{Re}+{Im}i" : $"{Re}{Im}i";
@@ -241,6 +241,48 @@ namespace ComplexLibrary
         public static Complex ToComplex(double n)
         {
             return new(n, 0);
+        }
+
+        /// <summary>
+        /// Calculates complex roots of quadratic equation ax² + bx + c = 0.
+        /// </summary>
+        /// <param name="a">Coefficient a of x squared (x²).</param>
+        /// <param name="b">Coefficient b of x (x¹).</param>
+        /// <param name="c">Coefficient c as constant (x⁰).</param>
+        /// <returns>Array of roots in complex form.</returns>
+        /// <exception cref="InvalidOperationException">Throws when coefficent a is 0 in the quadratic equation.</exception>
+        public static Complex[] FindQuadraticRoots(double a, double b, double c)
+        {
+            if (a is 0)
+            {
+                throw new InvalidOperationException(Message.BAD_EQUATION);
+            }
+
+            double dx = b * b - 4 * a * c;
+            double d = 2 * a;
+
+            Complex r1 = null, r2 = null;
+
+            if(dx > 0)
+            {
+                r1 = new(-b / d + Math.Sqrt(dx) / d, 0);
+                r2 = new(-b / d - Math.Sqrt(dx) / d, 0);
+            }
+
+            if (dx is 0)
+            {
+                r1 = new(-b / d, 0);
+                return new Complex[] { r1 };
+            }
+
+            if (dx < 0)
+            {
+                dx = Math.Abs(dx);
+                r1 = new(-b / d, Math.Sqrt(dx) / d);
+                r2 = new(-b / d, -Math.Sqrt(dx) / d);
+            }
+
+            return new Complex[] { r1, r2 };
         }
 
         /// <summary>

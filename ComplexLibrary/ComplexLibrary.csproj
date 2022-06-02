@@ -6,6 +6,9 @@
     <Company>Sachi-Home</Company>
     <Description>Reusable library to perform complex numerical operations</Description>
     <Copyright>Sachintha-PC</Copyright>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
