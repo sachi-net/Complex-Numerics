@@ -72,7 +72,7 @@ namespace ComplexLibrary
         /// <param name="phaseMode">Sign-convention of argument in either Arg(Z): (-π, π] or arg(Z): [0, 2π).</param>
         /// <exception cref="ArgumentException">Throws when the radius is negative.</exception>
         /// <exception cref="ArgumentException">Throws when the complex argument does not match with the given phase-mode.</exception>
-        public Complex(double radius, double argument, PhaseMode phaseMode = PhaseMode.ArgPrimary)
+        public Complex(double radius, double argument, PhaseMode phaseMode)
         {
             if (radius < 0)
             {
