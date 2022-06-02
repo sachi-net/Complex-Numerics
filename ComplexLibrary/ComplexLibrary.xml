@@ -94,6 +94,16 @@
             <param name="n">Double-precision real number n.</param>
             <returns>Complex number by provided real number.</returns>
         </member>
+        <member name="M:ComplexLibrary.Complex.FindQuadraticRoots(System.Double,System.Double,System.Double)">
+            <summary>
+            Calculates complex roots of quadratic equation ax² + bx + c = 0.
+            </summary>
+            <param name="a">Coefficient a of x squared (x²).</param>
+            <param name="b">Coefficient b of x (x¹).</param>
+            <param name="c">Coefficient c as constant (x⁰).</param>
+            <returns>Array of roots in complex form.</returns>
+            <exception cref="T:System.InvalidOperationException">Throws when coefficent a is 0 in the quadratic equation.</exception>
+        </member>
         <member name="M:ComplexLibrary.Complex.Equals(System.Object)">
             <summary>
             Evaluate the equality of this complex number with the given object.

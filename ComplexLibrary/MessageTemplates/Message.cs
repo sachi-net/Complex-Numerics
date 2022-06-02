@@ -8,5 +8,6 @@
         internal const string COMPLEX_NOT_INITIALIZED_NAMED = "Complex number object \"[#NAME]\" is not initialized.";
         internal const string INVALID_CONVERSION = "Complex number cannot be converted into a real instance because Imaginary component exists.";
         internal const string ZERO_DIVISION_ERROR = "Cannot divide complex number by zero.";
+        internal const string BAD_EQUATION = "Coefficient \"a\" cannot be zero in quadratic equation ax² + bx + c = 0.";
     }
 }
