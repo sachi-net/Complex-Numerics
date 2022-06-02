@@ -113,8 +113,8 @@ namespace ComplexLibrary
                 throw new ComplexNotInitializedException(Message.COMPLEX_NOT_INITIALIZED);
             }
 
-            double Re = Real is 0 ? Math.Abs(Real) : Real;
-            double Im = Imaginary is 0 ? Math.Abs(Imaginary) : Imaginary;
+            double Re = Real is 0 or < 1E-12 ? Math.Abs(Real) : Real;
+            double Im = Imaginary is 0 or < 1E-12 ? Math.Abs(Imaginary) : Imaginary;
 
             return $"({Re}, {Im})";
         }
@@ -132,8 +132,8 @@ namespace ComplexLibrary
                 throw new ComplexNotInitializedException(Message.COMPLEX_NOT_INITIALIZED);
             }
 
-            double Re = Real is 0 ? Math.Abs(Real) : Real;
-            double Im = Imaginary is 0 ? Math.Abs(Imaginary) : Imaginary;
+            double Re = Real is 0 or < 1E-12 ? Math.Abs(Real) : Real;
+            double Im = Imaginary is 0 or < 1E-12 ? Math.Abs(Imaginary) : Imaginary;
 
             return $"({Math.Round(Re, precision)}, {Math.Round(Im, precision)})";
         }
@@ -171,8 +171,8 @@ namespace ComplexLibrary
 
                 string complex = cases.ContainsKey(this) ? 
                     cases.Where(x => x.Key.Equals(this)).FirstOrDefault().Value :
-                    Real is 0 && Imaginary is not 0 ? $"{Im}i" :
-                    Real is not 0 && Imaginary is 0 ? $"{Re}" :
+                    (Real is 0 or < 1E-12) && Imaginary is not 0 ? $"{Im}i" :
+                    Real is not 0 && (Imaginary is 0 or < 1E-12) ? $"{Re}" :
                     Real is not 0 && Imaginary is 1 ? $"{Re}+i" :
                     Real is not 0 && Imaginary is -1 ? $"{Re}-i" :
                     Imaginary > 0 ? $"{Re}+{Im}i" : $"{Re}{Im}i";
