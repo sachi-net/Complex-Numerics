@@ -48,7 +48,7 @@ Following tables indicate the implementation structure of Complex-Library.
 ### Methods
 |Name|Return Type|Description|
 |---|---|---|
-|`Conjugate()`|`Complex`|Calculate the reciprocal (multiplicative inverse) of this complex number|
+|`Conjugate()`|`Complex`|Calculate the conjugate of this complex number|
 |`Equals(Complex)`|`bool`|Evaluate the equality of this complex number with the given complex number|
 |`Equals(object)`|`bool`|Evaluate the equality of this complex number with the given object|
 |`FindQuadraticRoots(double, double, double)`|`Complex[]`|Calculates complex roots of quadratic equation ax² + bx + c = 0|
