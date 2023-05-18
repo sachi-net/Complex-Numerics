@@ -1,6 +1,10 @@
 # Complex-Library
 Complex-Library is .NET 5.0 based reusable library designed perform algebraic arithmetic on complex numeric. Any .NET 5.0 or above application can utilize the functionalities of Complex-Library by referring it in the project dependencies.
 
+<img src="https://complex-calc.azurewebsites.net/complex_256x.png" height="80" alt="ComplexCalc" /> 
+
+#### Click here to explore [ComplexCalc - Demo](https://complex-calc.azurewebsites.net/) calculator and API service
+
 ## Prerequisites
 Complex-Library requires [.NET 5.0](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) (v5.#.#) or [.NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) (v6.#.#).
 
